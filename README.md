@@ -108,65 +108,20 @@ http://localhost:5050
 
 🧪 API Endpoints
 🔐 Auth Routes
-Method	Endpoint	Description
-POST	/auth/register	Register new user (Admin/VIP/Normal)
-POST	/auth/login	Login and get JWT token
+Method	    Endpoint	    Description
+POST	  /auth/register	  Register new user (Admin/VIP/Normal)
+POST	/auth/login	        Login and get JWT token
+
 🏁 Contest Routes
-Method	Endpoint	Description	Access
-POST	/contest/	Create new contest	Admin
+Method	  Endpoint	                Description	Access
+POST	/contest/	                    Create new contest	Admin
 POST	/contest/:contestId/question	Add question to contest	Admin
-GET	/contest/	Fetch contests (filtered by role)	All Authenticated Users
-POST	/contest/submit	Submit answers for scoring	Normal/VIP Users
+GET	/contest/	                      Fetch contests (filtered by role)	All Authenticated Users
+POST	/contest/submit	              Submit answers for scoring	Normal/VIP Users
+
 🏅 Leaderboard Route
-Method	Endpoint	Description	Access
-GET	/leaderboard/	Fetch leaderboard sorted by score	All Authenticated Users
-🧠 Example Payloads
-Create Contest (Admin)
-
-POST /contest/
-
-{
-  "name": "General Knowledge Quiz",
-  "description": "A fun quiz for all users",
-  "type": "NORMAL",
-  "startTime": "2025-10-25T10:00:00Z",
-  "endTime": "2025-10-25T12:00:00Z",
-  "prize": "Amazon Gift Card ₹1000"
-}
-
-Add Question to Contest (Admin)
-
-POST /contest/68fc8f690344984f296a7b3a/question
-
-{
-  "text": "What is the national animal of India?",
-  "type": "SINGLE",
-  "options": ["Tiger", "Lion", "Elephant", "Leopard"],
-  "correctAnswers": ["Tiger"]
-}
-
-Submit Contest (Normal or VIP User)
-
-POST /contest/submit
-
-{
-  "contestId": "68fc8f690344984f296a7b3a",
-  "answers": [
-    { "question": "68fc798a3f6698630e1fa436", "selected": ["Pink"] },
-    { "question": "68fc7e203f6698630e1fa43a", "selected": ["Venus"] },
-    { "question": "68fc7e493f6698630e1fa43e", "selected": ["Carbon Dioxide"] },
-    { "question": "68fc7e7e3f6698630e1fa442", "selected": ["Tiger", "Peacock", "Lotus"] },
-    { "question": "68fc7e9f3f6698630e1fa446", "selected": ["True"] }
-  ]
-}
-
-
-✅ Expected:
-
-{
-  "message": "Contest submitted successfully",
-  "score": 4
-}
+Method	Endpoint	        Description	Access
+GET	    /leaderboard/	      Fetch leaderboard sorted by score	All Authenticated Users
 
 🧾 Scoring Rules
 
@@ -178,24 +133,16 @@ No negative marking
 
 Multi-select must match all correct options for +1 point
 
-🗄️ Database Setup
+# MongoDB Atlas
 
-Local MongoDB
-
-brew services start mongodb-community
-
-
-MongoDB Atlas
 Replace .env MONGO_URI with your connection string:
-
+```
 MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/contestdb
+```
 
 🔐 Authentication Header Format
 
-Use JWT token in all protected routes:
-
 Authorization: Bearer <TOKEN>
-
 
 Example:
 
