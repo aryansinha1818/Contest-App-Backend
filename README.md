@@ -6,12 +6,12 @@
 [![Postman](https://img.shields.io/badge/Postman-API%20Testing-orange?logo=postman)](https://www.postman.com/)
 [![Git](https://img.shields.io/badge/Git-Version%20Control-black?logo=git)](https://git-scm.com/)
 
-#🏆 Contest App Backend
+# 🏆 Contest App Backend
 The Contest App is a robust and scalable server built using Node.js, Express.js, and MongoDB.
 It handles all the core logic for managing contests, users, and questions including secure authentication, contest creation, question tracking, and real-time score evaluation. Designed with modular architecture and clean APIs.
 
 
-###🚀 Features
+### 🚀 Features
 
 ✅ User Registration & Login (JWT-based authentication)
 🏁 Create, Fetch, and Manage Contests
